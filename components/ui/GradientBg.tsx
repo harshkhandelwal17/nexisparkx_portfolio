@@ -34,28 +34,24 @@ export const BackgroundGradientAnimation = ({
   containerClassName?: string;
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
-
   const [curX, setCurX] = useState(0);
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+
   useEffect(() => {
-    document.body.style.setProperty(
-      "--gradient-background-start",
-      gradientBackgroundStart
-    );
-    document.body.style.setProperty(
-      "--gradient-background-end",
-      gradientBackgroundEnd
-    );
-    document.body.style.setProperty("--first-color", firstColor);
-    document.body.style.setProperty("--second-color", secondColor);
-    document.body.style.setProperty("--third-color", thirdColor);
-    document.body.style.setProperty("--fourth-color", fourthColor);
-    document.body.style.setProperty("--fifth-color", fifthColor);
-    document.body.style.setProperty("--pointer-color", pointerColor);
-    document.body.style.setProperty("--size", size);
-    document.body.style.setProperty("--blending-value", blendingValue);
+    if (typeof window !== "undefined") {
+      document.body.style.setProperty("--gradient-background-start", gradientBackgroundStart);
+      document.body.style.setProperty("--gradient-background-end", gradientBackgroundEnd);
+      document.body.style.setProperty("--first-color", firstColor);
+      document.body.style.setProperty("--second-color", secondColor);
+      document.body.style.setProperty("--third-color", thirdColor);
+      document.body.style.setProperty("--fourth-color", fourthColor);
+      document.body.style.setProperty("--fifth-color", fifthColor);
+      document.body.style.setProperty("--pointer-color", pointerColor);
+      document.body.style.setProperty("--size", size);
+      document.body.style.setProperty("--blending-value", blendingValue);
+    }
   }, []);
 
   useEffect(() => {
@@ -63,11 +59,9 @@ export const BackgroundGradientAnimation = ({
       if (!interactiveRef.current) {
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
-      interactiveRef.current.style.transform = `translate(${Math.round(
-        curX
-      )}px, ${Math.round(curY)}px)`;
+      setCurX((prevX) => prevX + (tgX - prevX) / 20);
+      setCurY((prevY) => prevY + (tgY - prevY) / 20);
+      interactiveRef.current.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
     }
 
     move();
@@ -83,7 +77,9 @@ export const BackgroundGradientAnimation = ({
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+    if (typeof window !== "undefined") {
+      setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+    }
   }, []);
 
   return (
@@ -96,17 +92,8 @@ export const BackgroundGradientAnimation = ({
       <svg className="hidden">
         <defs>
           <filter id="blurMe">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
-            />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-              result="goo"
-            />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
             <feBlend in="SourceGraphic" in2="goo" />
           </filter>
         </defs>
@@ -118,51 +105,17 @@ export const BackgroundGradientAnimation = ({
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
       >
-        <div
-          className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_var(--first-color)_0,_var(--first-color)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:center_center]`,
-            `animate-first`,
-            `opacity-100`
-          )}
-        ></div>
-        <div
-          className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-400px)]`,
-            `animate-second`,
-            `opacity-100`
-          )}
-        ></div>
-        <div
-          className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%+400px)]`,
-            `animate-third`,
-            `opacity-100`
-          )}
-        ></div>
-        <div
-          className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-200px)]`,
-            `animate-fourth`,
-            `opacity-70`
-          )}
-        ></div>
-        <div
-          className={cn(
-            `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
-            `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
-            `[transform-origin:calc(50%-800px)_calc(50%+800px)]`,
-            `animate-fifth`,
-            `opacity-100`
-          )}
-        ></div>
+        {[firstColor, secondColor, thirdColor, fourthColor, fifthColor].map((color, index) => (
+          <div
+            key={index}
+            className={cn(
+              `absolute [background:radial-gradient(circle_at_center,_rgba(var(--${color}),_0.8)_0,_rgba(var(--${color}),_0)_50%)_no-repeat]`,
+              `[mix-blend-mode:var(--blending-value)] w-[var(--size)] h-[var(--size)] top-[calc(50%-var(--size)/2)] left-[calc(50%-var(--size)/2)]`,
+              `opacity-100`,
+              `animate-${index + 1}`
+            )}
+          ></div>
+        ))}
 
         {interactive && (
           <div

@@ -79,20 +79,20 @@ export const projects = [
     link: "https://campus-nexus.nexisparkx.com",
   },
   {
-    "id": 2,
-    "title": "Vishwakarma - Coaching Institute Platform",
-    "des": "A modern and intuitive website designed to streamline student enrollment, showcase Institute, and about the Institute.",
-    "img": "/p3.svg",
-    "iconLists": ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg"],
-    "link": "https://edu-elite.com"
+    id: 2,
+    title: "Vishwakarma - Coaching Institute Platform",
+    des: "A modern and intuitive website designed to streamline student enrollment, showcase Institute, and about the Institute.",
+    img: "/p3.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg"],
+    link: "https://edu-elite.com"
 },
 {
-  "id": 4,
-  "title": "FitPro Hub - Smart Diet & Fitness Platform",
-  "des": "A personalized fitness platform that suggests proper diet plans based on BMI calculations, helping users achieve their health goals.",
-  "img": "/p3o.png",
-  "iconLists": ["/re.svg", "/tail.svg", "/s.svg", "/next.svg", "/bmi.svg"],
-  "link": ""
+  id: 4,
+  title: "FitPro Hub - Smart Diet & Fitness Platform",
+  des: "A personalized fitness platform that suggests proper diet plans based on BMI calculations, helping users achieve their health goals.",
+  img: "/p3o.png",
+  iconLists: ["/re.svg", "/tail.svg", "/s.svg", "/next.svg", "/bmi.svg"],
+  link: ""
 },
   {
     id: 4,
@@ -106,22 +106,22 @@ export const projects = [
 
 export const testimonials = [
   {
-    "quote": 
+    quote: 
       "Working with nexisparkx and his team was a fantastic experience. They built a sleek and highly functional fitness website for my business, and I couldn't be happier with the results. Their attention to detail, responsiveness, and dedication to excellence made the entire process smooth and efficient. Highly recommended!",
-    "name": "Abhishek Tomer",
-    "title": "student"
+    name: "Abhishek Tomer",
+    title: "student"
   },  
   {
-    "quote": 
+    quote: 
       "nexisaprkx team did an outstanding job developing our old car parts e-commerce website. They understood our vision and delivered a seamless, user-friendly platform that has significantly improved our online presence. Their expertise, professionalism, and commitment to quality truly set them apart. Highly recommended!",
-    "name": "Anas",
-    "title": "Founder of Classic Auto Parts Hub"
+    name: "Anas",
+    title: "Founder of Classic Auto Parts Hub"
   },  
   {
-    "quote": 
+    quote: 
       "nexisaprkx team created a beautiful and calming meditation website tailored to my personal needs. The design is serene, the functionality is seamless, and the overall experience has truly enhanced my meditation practice. Their dedication and expertise made the process effortless. Highly recommended!",
-    "name": "Piyush",
-    "title": "Meditation Enthusiast"
+    name: "Piyush",
+    title: "Meditation Enthusiast"
   },
   
 ];

@@ -109,7 +109,7 @@ export const testimonials = [
     "quote": 
       "Working with nexisparkx and his team was a fantastic experience. They built a sleek and highly functional fitness website for my business, and I couldn't be happier with the results. Their attention to detail, responsiveness, and dedication to excellence made the entire process smooth and efficient. Highly recommended!",
     "name": "Abhishek Tomer",
-    // "title": "Found"
+    "title": "student"
   },  
   {
     "quote": 

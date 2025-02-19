@@ -2,12 +2,9 @@
 // const nextConfig = {};
 
 // export default nextConfig;
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
     reactStrictMode: true,
-    output: 'export', // Ensure you are using this if deploying a static site
+    output: 'export', // If using static export
     trailingSlash: true,
   };
-  
-  module.exports = nextConfig;
   

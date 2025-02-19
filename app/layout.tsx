@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "nexisparkx Portfolio",
-  description: " Portfolio",
+  description: "Portfolio",
 };
 
 export default function RootLayout({

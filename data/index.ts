@@ -87,12 +87,12 @@ export const projects = [
     link: "https://edu-elite.com"
 },
 {
-  id: 4,
+  id: 3,
   title: "FitPro Hub - Smart Diet & Fitness Platform",
   des: "A personalized fitness platform that suggests proper diet plans based on BMI calculations, helping users achieve their health goals.",
   img: "/p3o.png",
   iconLists: ["/re.svg", "/tail.svg", "/s.svg", "/next.svg", "/bmi.svg"],
-  link: ""
+  link: "/"
 },
   {
     id: 4,
